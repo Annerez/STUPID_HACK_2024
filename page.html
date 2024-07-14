@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .curtain {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-color: red;
+            transition: all 1s ease-in-out;
+        }
+        #left-curtain {
+            left: 0;
+        }
+        #right-curtain {
+            right: 0;
+        }
+        .open {
+            transform: translateX(-100%);
+        }
+        .open-right {
+            transform: translateX(100%);
+        }
+        .hidden-text {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .show-text {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-gray-100 flex items-center justify-center" onclick="openCurtains()">
+    <div id="left-curtain" class="curtain"></div>
+    <div id="right-curtain" class="curtain"></div>
+    <div id="welcome-text" class="relative z-10 text-center hidden-text flex flex-col justify-center items-center space-y-2">
+        <h1 class="text-4xl font-bold" onclick="lazy()">กูขี้เกียจทำ</h1>
+        <h1 class="text-4xl font-bold test hidden-text">(คนทำมันบิดไปร้องเกะ)</h1>
+        <image src="ke.jpg" class=" test hidden-text" width="200" height="200">
+    </div>
+    <script>
+        function openCurtains() {
+            document.getElementById('left-curtain').classList.add('open');
+            document.getElementById('right-curtain').classList.add('open-right');
+        
+            setTimeout(() => {
+                document.getElementById('welcome-text').classList.add('show-text');
+            }, 1000);
+        }
+
+        function lazy() {
+
+            setTimeout(() => {
+                document.querySelectorAll('.test').forEach(element => {
+                    element.classList.add('show-text');
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
